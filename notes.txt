@@ -1,0 +1,117 @@
+
+Spoken Word Programming
+
+Components:
+	"Word Oriented" Syntax, Lua-esque structure
+	Interpreter/JIT compiler
+	Text To Speech/Speech to Text system for programming
+	Continuously updating documentation system
+	Query engine from Speech Recognition for documentation
+	
+Example syntax:
+math.spk
+
+	define square with input x where 
+		return x times x
+	end
+	define cube with input x of type double where
+		return x times x times x
+	end
+	define powerTwo with input y and z 
+		return y exponent z
+	end
+	
+Example query on code:
+	Okay, get the result of square with input 8
+		-> "The result of square with input 8 is 64"
+	Okay, Save the result of square with input 8 as an example.
+		-> "square with input 8 returning 64 is saved as an example for square."
+	Okay, Which functions have two inputs?
+		-> "powerTwo"
+	Okay, Which functions have one input in the package math?
+		-> "there are two functions with one input, cube with a double, and square."
+	Okay, Document the function cube.
+		-> Ready
+		Cube returns the parameter times itself three times. End Doc.
+		-> Documentation saved
+	Okay, which functions have documentation or examples?
+		-> square has an example, and cube has documentation
+
+Language and Query Syntax:
+	Keywords from code syntax switch the speech context to coding,
+	"Okay" jumps out to the query system.
+	Okay [which|what|where is] <name> [with|have] <qualifier>|<component>
+		-> <name> [with] <qualifier> (and ...)
+	expression
+		<variable>|<value> [operation] <variable>|<value> (then ...)
+	variable definition
+		(global) variable <name> ([equals] <value>)
+	statement definition
+		set <name> equal to <expression>
+	if/else/elif
+		if <expression> then <body> else [if <expression>] <body> end if
+	while
+		while <expression> then <body> end while
+	for
+		for <initial> where <expression> then <operation> where
+			<body>
+		end for
+		
+		for <local> from <name>|<lower> to <name>|<upper> where
+			<body>
+		end for
+	for each
+		for each <local name> in <collection> where
+			<body>
+		end for each
+	iterate
+		get iterator from <name> as <local name> and increment until <condition> where
+			<body>
+		end iterator
+	array
+		declaration
+			variable array <name> with dimension [one|two|...|n]
+		access
+			get
+				get <array name> at <index>
+			set
+				set <array name> at index [<name>|<value>] to <value>
+			swap
+				swap from <array one> at index [<name>|<value>] with <array two> at index [<name>|<value>]
+	function 
+		definition
+			define <name> [with] <input> where
+				<body>
+			end function
+		call
+			<name> [with] <input>
+		recurse
+			define factorial with x where
+				if x equals 1 then
+					return 1
+				else
+					return x times recurse with <expression>
+				endif
+			end function
+		pass function as parameter
+			define equality with x and y where
+				return x equals y
+			end function
+			define eqCheck with x and y and checker where
+				return checker with x and y
+			end function
+			...
+			eqCheck with 3 and 4 and function equality
+			
+define collatzNext with n where
+	if n modulo 2 equals 0 then
+		return n divide 2
+	else
+		return 3 times n  plus 1
+	end if
+end function
+define collatzLength with start where
+	variable count equals 1
+	variable n equals start
+	while n greater than 1 then
+		
