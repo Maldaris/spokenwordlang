@@ -115,3 +115,59 @@ define collatzLength with start where
 	variable n equals start
 	while n greater than 1 then
 		
+
+use Sphinx 4
+
+"control words": stop, go back, replay, erase, restart
+
+if the system hasn’t recognized 5 tokens in a row, ignore everything back to the last recognized token, and wait for user to say "ok" or another control word to pick up again
+
+add support for "divisible by"
+- predefined convenience algorithms
+- "refer to fizzbuzz as fb" -- aliases
+- "tell me all aliases"
+- "does fizzbuzz have an alias?"
+- "what does fb refer to?"
+
+
+After defining a function, define how to use it in a phrase.
+
+These are defined as context:
+"Search L for foo"
+"Search for foo in L"
+"If foo is in L" ("in" is a keyboard)
+
+Context example: "n cubed" translates as "[something that turns into n] cubed"
+
+Only need to mention the argument names for the context string (not even the original function name).
+
+
+
+Ask: "are there any functions for searching"
+
+
+
+Variable names (for example) are just phonetic tokens, not interpreted. Other things like context words ("search for foo in L") it actually tries to get the true words, so it can use known synonyms, etc.
+
+
+
+
+Synonyms:
+- dub-dub-dub WWW
+- jig gif
+
+
+
+Training:
+
+- probably just need to ask the user to speak each of the keywords (maybe repeated a few times)
+
+
+First run through (new user):
+- start with smallest set of keywords possible
+- user training and system training
+- read some code
+
+
+
+
